@@ -51,4 +51,38 @@ def norm(v, minVal=None, maxVal=None):
 
 
 
+def norm8bit(v, minVal=None, maxVal=None):
+    """
+    NORM8BIT function takes an array and normalized it before converting it into 
+    a 8 bit unsigned integer and returns it.
+
+    Parameters
+    ----------
+    v : numpy.ndarray
+        Array of N dimension.
+    minVal : number 
+        Any value that needs to be used as min value for normalization. If no
+        value is provided then it uses min value of the given array. The default is None.
+    maxVal : number 
+        Any value that needs to be used as max value for normalization. If no
+        value is provided then it uses max value of the given array. The default is None.
+
+    Returns
+    -------
+    numpy.ndarray (uint8)
+        Numpy Array of same dimension as input with data type as unsigned integer 8 bit
+
+    """
+    if minVal == None:
+        minVal = v.min()
+    
+    if maxVal == None:
+        maxVal = v.max()
+      
+    maxVal -= minVal
+      
+    v = ((v - minVal)/maxVal) * 255
+    
+    return v.astype(np.uint8)
+
 
