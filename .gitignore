@@ -8,3 +8,7 @@ __pycache__/
 models/
 trainData/
 logs/
+
+
+notebooks/
+outputs/
